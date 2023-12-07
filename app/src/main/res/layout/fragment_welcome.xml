@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    tools:context=".ui.welcome.WelcomeFragment">
+
+    <ImageView
+        android:id="@+id/imgRainyDay"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/rainy_day" />
+
+    <TextView
+        android:id="@+id/tvWeatherString"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:text="@string/weather"
+        android:textColor="@color/white"
+        android:textSize="64sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgRainyDay" />
+
+    <TextView
+        android:id="@+id/tvForecastString"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:text="Forecasts"
+        android:textColor="@color/yellow"
+        android:textSize="64sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWeatherString" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnGetStart"
+        android:layout_width="280dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button_custom"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Get Start"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvForecastString" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

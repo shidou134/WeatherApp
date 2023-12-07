@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.weatherapp.ui.welcome.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_weatherFragment"
+            app:destination="@id/weatherFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_weatherFragment2"
+            app:destination="@id/weatherFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.example.weatherapp.ui.weatherPerHour.WeatherFragment"
+        android:label="fragment_weather"
+        tools:layout="@layout/fragment_weather" >
+        <action
+            android:id="@+id/action_weatherFragment_to_sevenDaysForecastFragment"
+            app:destination="@id/sevenDaysForecastFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sevenDaysForecastFragment"
+        android:name="com.example.weatherapp.ui.weatherPerDay.SevenDaysForecastFragment"
+        android:label="fragment_seven_days_forecast"
+        tools:layout="@layout/fragment_seven_days_forecast" >
+        <action
+            android:id="@+id/action_sevenDaysForecastFragment_to_weatherFragment"
+            app:destination="@id/weatherFragment" />
+        <argument
+            android:name="temp"
+            app:argType="com.example.weatherapp.data.model.CurrentWeather" />
+
+
+    </fragment>
+</navigation>
