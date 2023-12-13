@@ -6,12 +6,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import com.example.weatherapp.data.forecastmodel.Forecast
 import com.example.weatherapp.data.forecastmodel.ForecastData
 import com.example.weatherapp.ui.viewmodel.WeatherViewModel
 import com.example.weatherapp.databinding.FragmentWeatherBinding
@@ -65,6 +64,7 @@ class WeatherFragment : Fragment() {
     }
 
     private fun showError(error: String?) {
+        Toast.makeText(requireContext(),error,Toast.LENGTH_LONG).show()
     }
 
     private fun navToSevenDayForecast(weather: CurrentWeather?) {

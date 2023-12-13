@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -12,7 +13,6 @@ import com.example.weatherapp.R
 import com.example.weatherapp.databinding.FragmentSevenDaysForecastBinding
 import com.example.weatherapp.data.model.CurrentWeather
 import com.example.weatherapp.ui.viewmodel.WeatherViewModel
-import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -39,7 +39,9 @@ class SevenDaysForecastFragment : Fragment() {
 
         viewModel.weatherLiveData.observe(viewLifecycleOwner) { weather ->
             updateWeather(weather)
-
+        }
+        viewModel.error.observe(viewLifecycleOwner) { error ->
+            showError(error)
         }
         viewModel.getWeather()
 
@@ -48,7 +50,11 @@ class SevenDaysForecastFragment : Fragment() {
             tvMinTemp.text = "Min: ${temp.main?.temp_min.toString()}°C"
             tvLocation.text = temp.name
         }
-        navToWeatherFragment()
+        initAction()
+    }
+
+    private fun showError(error: String?) {
+        Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
     }
 
     private fun updateWeather(weather: CurrentWeather) {
@@ -65,12 +71,12 @@ class SevenDaysForecastFragment : Fragment() {
     }
 
     private fun convertTimestamp(timestamp: Int?): String {
-        val date = Date(timestamp?.toLong()!! * 1000)
+        val date = Date((timestamp ?: 0).toLong() * 1000)
         val dateFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
         return dateFormat.format(date)
     }
 
-    private fun navToWeatherFragment() {
+    private fun initAction() {
         binding.imgMenu.setOnClickListener {
             findNavController().navigate(R.id.action_sevenDaysForecastFragment_to_weatherFragment)
         }
