@@ -52,7 +52,6 @@ class WeatherFragment : Fragment() {
         viewModel.forecastLiveData.observe(viewLifecycleOwner) { forecast ->
             updateForecast(forecast)
         }
-
         viewModel.getForecast()
 
     }
@@ -64,7 +63,7 @@ class WeatherFragment : Fragment() {
     }
 
     private fun showError(error: String?) {
-        Toast.makeText(requireContext(),error,Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
     }
 
     private fun navToSevenDayForecast(weather: CurrentWeather?) {

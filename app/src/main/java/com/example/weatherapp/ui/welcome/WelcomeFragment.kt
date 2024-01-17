@@ -13,15 +13,17 @@ class WelcomeFragment : Fragment() {
 
     private lateinit var binding: FragmentWelcomeBinding
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentWelcomeBinding.inflate(inflater, container, false)
         binding.btnGetStart.setOnClickListener {
             findNavController().navigate(R.id.action_welcomeFragment_to_weatherFragment)
         }
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_welcome, container, false)
+        return binding.root
     }
 
 }

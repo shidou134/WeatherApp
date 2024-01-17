@@ -16,7 +16,7 @@ import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
 
-class WeatherViewModel(private val context: Context) : ViewModel() {
+class WeatherViewModel() : ViewModel() {
     private val _weatherLiveData: MutableLiveData<CurrentWeather> = MutableLiveData()
     val weatherLiveData: LiveData<CurrentWeather>
         get() = _weatherLiveData
@@ -57,9 +57,9 @@ class WeatherViewModel(private val context: Context) : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             val response = try {
                 ApiBuilder.api.getWeather(
-                    city = "ha noi",
-                    apiKey = "71ac2999eb0cdd9b712b1e70fc0fe448",
-                    units = "metric"
+                    city = city,
+                    apiKey = apiKey,
+                    units = units
                 )
             } catch (e: HttpException) {
                 _error.postValue("http error: ${e.message}")
