@@ -46,7 +46,6 @@ class WeatherAdapter(private var list: List<ForecastData>) :
     }
 
     override fun getItemCount(): Int {
-        Log.d("shidou", "getItemCount: ${list.size}")
         return list.size
     }
 
